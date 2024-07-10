@@ -49,6 +49,7 @@ export function HomeNavbar() {
                 Help
               </NavLink>
             </Box>
+            <Basket />
             {!authMember ? (
               <Box>
                 <Button
@@ -73,7 +74,6 @@ export function HomeNavbar() {
             <Box className="wel-txt">The Choice, not just a choice</Box>
             <Box className="service-txt">24 hours service</Box>
             <Box className="signup">
-              <Basket />
               {!authMember ? (
                 <Button variant="contained" className="signup-button">
                   SIGN UP
