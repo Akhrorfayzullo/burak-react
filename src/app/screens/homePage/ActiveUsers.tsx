@@ -31,32 +31,24 @@ export default function ActiveUsers() {
             spaceBetween={30}
             loop={true}
             initialSlide={1}
-            navigation={{
-              nextEl: ".user-swiper-button-next",
-              prevEl: ".user-swiper-button-prev",
-            }}
-            pagination={{
-              el: ".user-swiper-pagination",
-              clickable: true,
-            }}
             autoplay={{
               delay: 5000,
               disableOnInteraction: true,
             }}
           >
-            {activeUsers?.length > 0 ? (
-              activeUsers.map((user, index) => (
+            {activeUsers.length !== 0 ? (
+              activeUsers.map((ele, index) => (
                 <SwiperSlide key={index} className="user-card-frame">
                   <CssVarsProvider>
                     <Card variant="outlined" className="card">
                       <CardOverflow>
                         <AspectRatio ratio="1">
-                          <img src={user.memberImage} alt={user.memberNick} />
+                          <img src={ele.memberImage} alt={ele.memberNick} />
                         </AspectRatio>
                       </CardOverflow>
                       <CardOverflow>
                         <Typography className="member-nickname">
-                          {user.memberNick}
+                          {ele.memberNick}
                         </Typography>
                       </CardOverflow>
                     </Card>
@@ -67,21 +59,6 @@ export default function ActiveUsers() {
               <Box className="no-data">No Active Users!</Box>
             )}
           </Swiper>
-
-          <Box className="user-prev-next-frame">
-            <img
-              className="user-swiper-button-prev"
-              src="/icons/arrow-right.svg"
-              alt=""
-            />
-            <div className="user-dot-frame-pagination user-swiper-pagination"></div>
-            <img
-              src="/icons/arrow-right.svg"
-              className="user-swiper-button-next"
-              style={{ transform: "rotate(-180deg)" }}
-              alt=""
-            />
-          </Box>
         </Stack>
       </Container>
     </div>
