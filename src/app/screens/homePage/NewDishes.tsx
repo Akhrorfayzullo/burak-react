@@ -42,9 +42,7 @@ export default function NewDishes() {
 
                           <Divider width="2" height="24" bg="#d9d9d9" />
 
-                          <Typography className="price">
-                            ${Math.floor(Math.random() * 30)}
-                          </Typography>
+                          <Typography className="price">12</Typography>
                         </Stack>
 
                         <Stack>
