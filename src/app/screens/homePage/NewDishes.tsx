@@ -16,8 +16,6 @@ export default function NewDishes() {
     { productName: "Lavash", imagePath: "/img/lavash.webp" },
   ];
 
-  const productSizes = ["Small Size", "Normal Size", "Large Size", "Set"];
-
   return (
     <div className="new-products-frame">
       <Container>
@@ -29,13 +27,7 @@ export default function NewDishes() {
                 newDishes.map((ele, index) => (
                   <Card key={index} variant="outlined" className="card">
                     <CardOverflow>
-                      <div className="product-sale">
-                        {
-                          productSizes[
-                            Math.floor(Math.random() * productSizes?.length)
-                          ]
-                        }
-                      </div>
+                      <div className="product-sale">Normal Size</div>
                       <AspectRatio ratio="1">
                         <img src={ele.imagePath} alt="" />
                       </AspectRatio>
