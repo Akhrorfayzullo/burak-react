@@ -47,7 +47,7 @@ export default function NewDishes() {
 
                         <Stack>
                           <Typography className="views">
-                            {Math.floor(Math.random() * 500)}
+                            200
                             <VisibilityIcon
                               sx={{ fontSize: 20, marginLeft: "5px" }}
                             />
