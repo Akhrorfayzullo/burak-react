@@ -23,7 +23,7 @@ export default function ActiveUsers() {
     <div className="active-users-frame">
       <Container>
         <Stack className="main">
-          <Box className="category-title">Active Users</Box>
+          <Box className="category-title">Active Users </Box>
           <Swiper
             className="cards-frame"
             slidesPerView={"auto"}
