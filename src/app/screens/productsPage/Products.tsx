@@ -169,7 +169,7 @@ export default function Products() {
             <Box className="title">Our Address</Box>
 
             <iframe
-              src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=123-45+Gangnam-daero,Gangnam-gu,Seoul,South+Korea"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13052.276692297633!2d128.9948210120201!3d35.12994729603954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568ea1e39aa4bb3%3A0xf48061816fe48d91!2z6rCV7JuQ7YGs66CI7J24!5e0!3m2!1sen!2skr!4v1721215454220!5m2!1sen!2skr"
               style={{ marginTop: "60px" }}
               width={"1320"}
               height={"500"}

@@ -6,7 +6,7 @@ import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { HomePage } from "./screens/homePage";
 import { ProductsPage } from "./screens/productsPage";
 import { OrdersPage } from "./screens/ordersPage";
-import { UserPage } from "./screens/userPage";
+import UserPage from "./screens/userPage/index";
 import { HomeNavbar } from "./components/headers/HomeNavbar";
 import { OtherNavbar } from "./components/headers/OtherNavbar";
 import Footer from "./components/footer";

@@ -23,31 +23,51 @@ export function OtherNavbar() {
             alignItems={"center"}
           >
             <Box className={"hover-line"}>
-              <NavLink to="/" activeClassName={"underline"}>
+              <NavLink
+                to="/"
+                activeClassName={"underline"}
+                style={{ color: "white" }}
+              >
                 Home
               </NavLink>
             </Box>
             <Box className={"hover-line"}>
-              <NavLink to="/products" activeClassName={"underline"}>
+              <NavLink
+                to="/products"
+                activeClassName={"underline"}
+                style={{ color: "white" }}
+              >
                 Products
               </NavLink>
             </Box>
             {authMember ? (
               <Box className={"hover-line"}>
-                <NavLink to="/orders" activeClassName={"underline"}>
+                <NavLink
+                  to="/orders"
+                  activeClassName={"underline"}
+                  style={{ color: "white" }}
+                >
                   Orders
                 </NavLink>
               </Box>
             ) : null}
             {authMember ? (
               <Box className={"hover-line"}>
-                <NavLink to="/member-page" activeClassName={"underline"}>
+                <NavLink
+                  to="/member-page"
+                  activeClassName={"underline"}
+                  style={{ color: "white" }}
+                >
                   My page
                 </NavLink>
               </Box>
             ) : null}
             <Box className={"hover-line"}>
-              <NavLink to="/help" activeClassName={"underline"}>
+              <NavLink
+                to="/help"
+                activeClassName={"underline"}
+                style={{ color: "white" }}
+              >
                 Help
               </NavLink>
             </Box>
