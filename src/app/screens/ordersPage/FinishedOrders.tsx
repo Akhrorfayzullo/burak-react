@@ -22,7 +22,7 @@ const FinishedOrders = () => {
                     <img alt="" src={"/icons/close.svg"} />
                     <p>3</p>
                     <img alt="" src={"/icons/pause.svg"} />
-                    <p style={{ marginLeft: "15px" }}>${11 * 3}</p>
+                    <p style={{ marginLeft: "15px" }}>$33</p>
                   </Box>
                 </Box>
               ))}
@@ -31,7 +31,7 @@ const FinishedOrders = () => {
             <Box className={"total-price-box"}>
               <Box className={"box-total"}>
                 <p>Product price</p>
-                <p>${11 * 3 * 2}</p>
+                <p>$35</p>
                 <img
                   alt=""
                   src={"/icons/plus.svg"}
@@ -45,7 +45,7 @@ const FinishedOrders = () => {
                   style={{ marginLeft: "20px" }}
                 />
                 <p>Total</p>
-                <p>${33 * 2 + 5}</p>
+                <p>$40</p>
               </Box>
             </Box>
           </Box>

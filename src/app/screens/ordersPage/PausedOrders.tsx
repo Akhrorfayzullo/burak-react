@@ -25,7 +25,7 @@ export default function PausedOrders() {
                       <img src={"/icons/close.svg"} alt="" />
                       <p>2</p>
                       <img src={"/icons/pause.svg"} alt="" />
-                      <p style={{ marginLeft: "15px" }}>$24</p>
+                      <p style={{ marginLeft: "15px" }}>$18</p>
                     </Box>
                   </Box>
                 ))}
@@ -34,7 +34,7 @@ export default function PausedOrders() {
               <Box className="total-price-box">
                 <Box className="box-total">
                   <p>Product price</p>
-                  <p>$10</p>
+                  <p>$54</p>
                   <img
                     alt=""
                     src={"/icons/plus.svg"}
@@ -48,7 +48,7 @@ export default function PausedOrders() {
                     style={{ marginLeft: "20px" }}
                   />
                   <p>Total</p>
-                  <p>$14</p>
+                  <p>$58</p>
                 </Box>
 
                 <Button
