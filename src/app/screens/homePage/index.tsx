@@ -6,64 +6,37 @@ import Advertisement from "./Advertisement";
 import ActiveUsers from "./ActiveUsers";
 import Events from "./Events";
 import "../../../css/home.css";
+
+import { useDispatch } from "react-redux";
+import { Dispatch } from "@reduxjs/toolkit";
 import { setPopularDishes } from "./slice";
 import { Product } from "../../../lib/types/product";
-import { createSelector, Dispatch } from "@reduxjs/toolkit";
-import { useDispatch, useSelector } from "react-redux";
-import { retrievePopularDishes } from "./selector";
+import ProductService from "../../services/ProductService";
+import { ProductCollection } from "../../../lib/enums/product.enums";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
 });
-const popularDishesRetriever = createSelector(
-  retrievePopularDishes,
-  (popularDishes) => ({ popularDishes })
-);
+
 export function HomePage() {
   const { setPopularDishes } = actionDispatch(useDispatch());
-  const { popularDishes } = useSelector(popularDishesRetriever);
-  // Selector => Data
+
   useEffect(() => {
-    // const result = [
-    //   {
-    //     _id: "jjgh7893043n49fh839",
-    //     productStatus: "PROCESS",
-    //     productCollection: "DISH",
-    //     productName: "Blabla",
-    //     productPrice: 56,
-    //     productCount: 2,
-    //     productSize: "NORMAL",
-    //     productVolume: 1,
-    //     productDesc: "product",
-    //   },
-    //   {
-    //     _id: "jjgh7893043n49fh839",
-    //     productStatus: "PROCESS",
-    //     productCollection: "DISH",
-    //     productName: "Blabla",
-    //     productPrice: 56,
-    //     productCount: 2,
-    //     productSize: "NORMAL",
-    //     productVolume: 1,
-    //     productDesc: "product",
-    //   },
-    //   {
-    //     _id: "jjgh7893043n49fh839",
-    //     productStatus: "PROCESS",
-    //     productCollection: "DISH",
-    //     productName: "Blabla",
-    //     productPrice: 56,
-    //     productCount: 2,
-    //     productSize: "NORMAL",
-    //     productVolume: 1,
-    //     productDesc: "product",
-    //   },
-    // ];
-    // @ts-ignore
-    // setPopularDishes(result);
-    //Backend =>Data
-    //Slice data => Store
+    const product = new ProductService();
+    product
+      .getProducts({
+        page: 1,
+        limit: 4,
+        order: "productViews",
+        productCollection: ProductCollection.DISH,
+      })
+      .then((data) => {
+        console.log("Data here: ", data);
+        setPopularDishes(data);
+      })
+      .catch((err) => console.log(err));
   }, []);
+  // console.log("popularDishes: ", popularDishes);
   return (
     <div className={"homepage"}>
       <Statistics />

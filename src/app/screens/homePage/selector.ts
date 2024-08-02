@@ -1,8 +1,8 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { AppRootState } from "../../../lib/types/screen";
-import { HomePage } from ".";
 
-const selectHomePage = (state: AppRootState) => state.homepage;
+const selectHomePage = (state: AppRootState) => state.homePage;
+
 export const retrievePopularDishes = createSelector(
     selectHomePage,
     (HomePage) => HomePage.popularDishes

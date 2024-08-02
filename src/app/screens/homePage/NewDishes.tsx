@@ -8,13 +8,19 @@ import Typography from "@mui/joy/Typography";
 import Divider from "../../components/divider";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+// import { Product } from "../../../lib/types/product";
+import { retrieveNewDishes } from "./selector";
+import { serverApi } from "../../../lib/config";
+import { Product } from "../../../lib/types/product";
+
+const newDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
+  newDishes,
+}));
+
 export default function NewDishes() {
-  const newDishes = [
-    { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-    { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-    { productName: "Kebab", imagePath: "/img/kebab.webp" },
-    { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  ];
+  const { newDishes } = useSelector(newDishesRetriever);
 
   return (
     <div className="new-products-frame">
@@ -24,39 +30,44 @@ export default function NewDishes() {
           <Stack className="cards-frame">
             <CssVarsProvider>
               {newDishes.length !== 0 ? (
-                newDishes.map((ele, index) => (
-                  <Card key={index} variant="outlined" className="card">
-                    <CardOverflow>
-                      <div className="product-sale">Normal Size</div>
-                      <AspectRatio ratio="1">
-                        <img src={ele.imagePath} alt="" />
-                      </AspectRatio>
-                    </CardOverflow>
+                newDishes.map((ele: Product) => {
+                  const imagePath = `${serverApi}/${ele.productImages[0]}`;
+                  return (
+                    <Card key={ele._id} variant="outlined" className="card">
+                      <CardOverflow>
+                        <div className="product-sale">${ele.productSize}</div>
+                        <AspectRatio ratio="1">
+                          <img src={imagePath} alt="" />
+                        </AspectRatio>
+                      </CardOverflow>
 
-                    <CardOverflow variant="soft" className="product-detail">
-                      <Stack className="info">
-                        <Stack flexDirection={"row"}>
-                          <Typography className="title">
-                            {ele?.productName}
-                          </Typography>
+                      <CardOverflow variant="soft" className="product-detail">
+                        <Stack className="info">
+                          <Stack flexDirection={"row"}>
+                            <Typography className="title">
+                              {ele.productName}
+                            </Typography>
 
-                          <Divider width="2" height="24" bg="#d9d9d9" />
+                            <Divider width="2" height="24" bg="#d9d9d9" />
 
-                          <Typography className="price">12</Typography>
+                            <Typography className="price">
+                              ${ele.productPrice}
+                            </Typography>
+                          </Stack>
+
+                          <Stack>
+                            <Typography className="views">
+                              {ele.productViews}
+                              <VisibilityIcon
+                                sx={{ fontSize: 20, marginLeft: "5px" }}
+                              />
+                            </Typography>
+                          </Stack>
                         </Stack>
-
-                        <Stack>
-                          <Typography className="views">
-                            200
-                            <VisibilityIcon
-                              sx={{ fontSize: 20, marginLeft: "5px" }}
-                            />
-                          </Typography>
-                        </Stack>
-                      </Stack>
-                    </CardOverflow>
-                  </Card>
-                ))
+                      </CardOverflow>
+                    </Card>
+                  );
+                })
               ) : (
                 <Box className="no-data">New dishes are not available</Box>
               )}
