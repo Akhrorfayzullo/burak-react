@@ -14,6 +14,10 @@ import { createSelector } from "reselect";
 import { retrieveNewDishes } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { Product } from "../../../lib/types/product";
+import {
+  ProductCollection,
+  ProductVolume,
+} from "../../../lib/enums/product.enums";
 
 const newDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
   newDishes,
@@ -32,12 +36,17 @@ export default function NewDishes() {
               {newDishes.length !== 0 ? (
                 newDishes.map((ele: Product) => {
                   const imagePath = `${serverApi}/${ele.productImages[0]}`;
+                  const sizeVolume =
+                    ele.productCollection === ProductCollection.DRINK
+                      ? ele.productVolume + " l"
+                      : ele.productSize + " size";
+                  // console.log("SSSSSSSSSSS", sizeVolume);
                   return (
                     <Card key={ele._id} variant="outlined" className="card">
                       <CardOverflow>
-                        <div className="product-sale">${ele.productSize}</div>
+                        <div className="product-sale">${sizeVolume}</div>
                         <AspectRatio ratio="1">
-                          <img src={imagePath} alt="" />
+                          <img src={imagePath} alt={ele.productName} />
                         </AspectRatio>
                       </CardOverflow>
 
@@ -51,7 +60,7 @@ export default function NewDishes() {
                             <Divider width="2" height="24" bg="#d9d9d9" />
 
                             <Typography className="price">
-                              ${ele.productPrice}
+                              {ele.productPrice}
                             </Typography>
                           </Stack>
 
