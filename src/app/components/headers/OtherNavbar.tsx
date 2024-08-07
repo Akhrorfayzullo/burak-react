@@ -1,8 +1,18 @@
 import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
+import { CardItem } from "../../../lib/types/search";
 
-export function OtherNavbar() {
+interface OtherNavbarProps {
+  cartItems: CardItem[];
+  onAdd: (item: CardItem) => void;
+  onRemove: (item: CardItem) => void;
+  onDelete: (item: CardItem) => void;
+  onDeleteAll: () => void;
+}
+
+export function OtherNavbar(props: OtherNavbarProps) {
+  const { cartItems, onAdd, onDelete, onDeleteAll, onRemove } = props;
   const authMember = null;
   return (
     <div className="other-navbar">
@@ -71,7 +81,13 @@ export function OtherNavbar() {
                 Help
               </NavLink>
             </Box>
-            <Basket />
+            <Basket
+              cartItems={cartItems}
+              onAdd={onAdd}
+              onRemove={onRemove}
+              onDelete={onDelete}
+              onDeleteAll={onDeleteAll}
+            />
             {!authMember ? (
               <Box>
                 <Button

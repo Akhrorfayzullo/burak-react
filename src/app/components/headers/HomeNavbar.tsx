@@ -2,8 +2,18 @@ import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import React, { useEffect, useState } from "react";
+import { CardItem } from "../../../lib/types/search";
 
-export function HomeNavbar() {
+interface HomeNavbarProps {
+  cartItems: CardItem[];
+  onAdd: (item: CardItem) => void;
+  onRemove: (item: CardItem) => void;
+  onDelete: (item: CardItem) => void;
+  onDeleteAll: () => void;
+}
+
+export function HomeNavbar(props: HomeNavbarProps) {
+  const { cartItems, onAdd, onDelete, onDeleteAll, onRemove } = props;
   const authMember = null;
   const [count, setCount] = useState<number>(0);
   const [value, setValue] = useState<boolean>(true);
@@ -63,7 +73,13 @@ export function HomeNavbar() {
                 Help
               </NavLink>
             </Box>
-            <Basket />
+            <Basket
+              cartItems={cartItems}
+              onAdd={onAdd}
+              onRemove={onRemove}
+              onDelete={onDelete}
+              onDeleteAll={onDeleteAll}
+            />
             {!authMember ? (
               <Box>
                 <Button
