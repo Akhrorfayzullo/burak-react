@@ -10,23 +10,21 @@ interface HomeNavbarProps {
   onRemove: (item: CardItem) => void;
   onDelete: (item: CardItem) => void;
   onDeleteAll: () => void;
+  setSignupOpen: (isOpen: boolean) => void;
+  setLoginOpen: (isOpen: boolean) => void;
 }
 
 export function HomeNavbar(props: HomeNavbarProps) {
-  const { cartItems, onAdd, onDelete, onDeleteAll, onRemove } = props;
+  const {
+    cartItems,
+    onAdd,
+    onDelete,
+    onDeleteAll,
+    onRemove,
+    setLoginOpen,
+    setSignupOpen,
+  } = props;
   const authMember = null;
-  const [count, setCount] = useState<number>(0);
-  const [value, setValue] = useState<boolean>(true);
-  useEffect(() => {
-    console.log("ComponentDidMount"); //Data fetch
-    setCount(count + 1);
-    return () => {
-      console.log("willUnmount");
-    };
-  }, [value]);
-  const buttonHandler = () => {
-    setValue(!value);
-  };
 
   return (
     <div className="home-navbar">
@@ -85,6 +83,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
                 <Button
                   variant="contained"
                   style={{ background: "#3776cc", color: "##f8f8ff" }}
+                  onClick={() => setLoginOpen(true)}
                 >
                   Login
                 </Button>
@@ -102,13 +101,13 @@ export function HomeNavbar(props: HomeNavbarProps) {
           <Stack className="detail">
             <Box className="head-main-txt"> World's Most Delicious Cousine</Box>
             <Box className="wel-txt">The Choice, not just a choice</Box>
-            <Box className="service-txt">{count} hours service</Box>
+            <Box className="service-txt">2 hours service</Box>
             <Box className="signup">
               {!authMember ? (
                 <Button
                   variant="contained"
                   className="signup-button"
-                  onClick={buttonHandler}
+                  onClick={() => setSignupOpen(true)}
                 >
                   SIGN UP
                 </Button>
