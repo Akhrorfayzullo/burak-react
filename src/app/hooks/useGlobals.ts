@@ -5,6 +5,8 @@ import { error } from "console";
 interface GlobalInterface {
     authMember: Member | null;
     setAuthMember: (member: Member | null) => void;
+    orderBuilder: Date;
+    setOrderBuilder: (input: Date) => void;
 }
 
 export const GlobalContext  = createContext<GlobalInterface | undefined>(

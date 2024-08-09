@@ -7,8 +7,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 import { CardItem } from "../../../lib/types/search";
-import { serverApi } from "../../../lib/config";
 import { DeleteForever } from "@mui/icons-material";
+
+import { Messages, serverApi } from "../../../lib/config";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { useGlobals } from "../../../app/hooks/useGlobals";
+import OrderService from "../../../app/services/OrderService";
+
 interface BasketProps {
   cartItems: CardItem[];
   onAdd: (item: CardItem) => void;
@@ -19,7 +24,9 @@ interface BasketProps {
 
 export default function Basket(props: BasketProps) {
   const { cartItems, onAdd, onDelete, onDeleteAll, onRemove } = props;
-  const authMember = null;
+  const { authMember, setOrderBuilder } = useGlobals();
+
+  // const authMember = null;
   const history = useHistory();
   const itemsPrice: number = cartItems.reduce(
     (a: number, c: CardItem) => a + c.quantity * c.price,
@@ -37,6 +44,24 @@ export default function Basket(props: BasketProps) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const proceedOrderHandler = async () => {
+    try {
+      handleClose();
+      if (!authMember) throw new Error(Messages.error2);
+
+      const order = new OrderService();
+      await order.createOrder(cartItems);
+
+      onDeleteAll();
+
+      // Refresh via context
+      history.push("/orders");
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
   };
 
   return (
@@ -144,7 +169,11 @@ export default function Basket(props: BasketProps) {
               <span className={"price"}>
                 Total: ${total} ({itemsPrice} + {shippingCost})
               </span>
-              <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+              <Button
+                startIcon={<ShoppingCartIcon />}
+                variant={"contained"}
+                onClick={proceedOrderHandler}
+              >
                 Order
               </Button>
             </Box>
