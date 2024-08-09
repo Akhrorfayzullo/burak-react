@@ -83,6 +83,7 @@ class MemberService {
       try{
         const url = this.path + "/member/logout"
         const result = await axios.post(url,{}, {withCredentials: true});
+        console.log("MB: Logout result", result)
 
         localStorage.removeItem("memberData")
 

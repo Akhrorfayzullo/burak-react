@@ -2,12 +2,12 @@ import { createContext, useContext } from "react";
 import { Member } from "../../lib/types/member";
 import { error } from "console";
 
-interface Globalnterface {
+interface GlobalInterface {
     authMember: Member | null;
     setAuthMember: (member: Member | null) => void;
 }
 
-export const GlobalContext  = createContext<Globalnterface | undefined>(
+export const GlobalContext  = createContext<GlobalInterface | undefined>(
     undefined
 )
 
