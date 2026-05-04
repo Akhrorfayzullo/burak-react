@@ -1,5 +1,11 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
+
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("accessToken");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 // import { Product, ProductInquiry } from "../../lib/types/product";
 import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../../lib/types/member";
 
@@ -50,6 +56,7 @@ class MemberService {
         const member:Member = result.data.member
         console.log("member ", member)
         localStorage.setItem("memberData", JSON.stringify(member))
+        if (result.data.accesToken) localStorage.setItem("accessToken", result.data.accesToken)
 
         return member
 
@@ -69,6 +76,7 @@ class MemberService {
         const member:Member = result.data.member
         console.log("member ", member)
         localStorage.setItem("memberData", JSON.stringify(member))
+        if (result.data.accessToken) localStorage.setItem("accessToken", result.data.accessToken)
 
         return member
 
@@ -86,6 +94,7 @@ class MemberService {
         console.log("MB: Logout result", result)
 
         localStorage.removeItem("memberData")
+        localStorage.removeItem("accessToken")
 
 
       }catch(err){
