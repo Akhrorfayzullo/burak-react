@@ -15,7 +15,10 @@ import axios from "axios";
 // Send JWT token with every request
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem("accessToken");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+  if (token) {
+    config.headers = config.headers ?? {};
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
   return config;
 });
 
