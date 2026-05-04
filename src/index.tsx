@@ -10,6 +10,14 @@ import "./css/index.css";
 import theme from "./app/MaterialTheme";
 import { BrowserRouter as Router } from "react-router-dom";
 import ContextProvider from "./app/context/ContextProvider";
+import axios from "axios";
+
+// Send JWT token with every request
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("accessToken");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);

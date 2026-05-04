@@ -1,11 +1,6 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
 
-axios.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
 // import { Product, ProductInquiry } from "../../lib/types/product";
 import { LoginInput, Member, MemberInput, MemberUpdateInput } from "../../lib/types/member";
 
