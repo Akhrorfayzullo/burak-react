@@ -107,11 +107,11 @@ export default function HelpPage() {
                       </div>
                       <Box
                         display={"flex"}
-                        justifyContent={"flex-end"}
+                        justifyContent={"stretch"}
                         sx={{ mt: "30px" }}
                       >
-                        <Button type={"submit"} variant="contained">
-                          Send
+                        <Button type={"submit"} variant="contained" className={"send-btn"}>
+                          Send Message
                         </Button>
                       </Box>
                     </form>

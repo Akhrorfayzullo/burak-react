@@ -16,30 +16,27 @@ export default function Events() {
           </Box>
 
           <Swiper
-            className="events-info swiper-wrapper"
+            className="events-info"
             slidesPerView={"auto"}
-            centeredSlides={true}
-            spaceBetween={30}
-            loop={true}
-            initialSlide={1}
+            centeredSlides={false}
+            spaceBetween={24}
+            loop={false}
             navigation={{
               nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button",
+              prevEl: ".swiper-button-prev",
             }}
             pagination={{
               el: ".swiper-pagination",
               clickable: true,
             }}
             autoplay={{
-              delay: 6000,
-              disableOnInteraction: true,
+              delay: 5000,
+              disableOnInteraction: false,
             }}
           >
             {plans?.map((plan, index) => (
               <SwiperSlide key={index} className="events-info-frame">
-                <div className="events-img">
-                  <img src={plan?.img} className="events-img" alt="" />
-                </div>
+                <img src={plan?.img} className="events-img" alt={plan?.title} />
 
                 <Box className="events-desc">
                   <Box className="events-bott">
@@ -47,7 +44,6 @@ export default function Events() {
                       <div className="event-title-speaker">
                         <strong>{plan?.title}</strong>
                         <div className="event-organizator">
-                          <img src={"//icons/speaker.svg"} alt="" />
                           <p className="spec-text-author">{plan?.author}</p>
                         </div>
                       </div>
@@ -61,6 +57,7 @@ export default function Events() {
                         </div>
                         <div className="bott-info-main">
                           <img src="/icons/location.svg" alt="" />
+                          {plan?.location}
                         </div>
                       </div>
                     </Box>
@@ -74,15 +71,15 @@ export default function Events() {
             <img
               className="swiper-button-prev"
               src="/icons/arrow-right.svg"
-              alt=""
+              style={{ transform: "rotate(180deg)", cursor: "pointer" }}
+              alt="prev"
             />
             <div className="dot-frame-pagination swiper-pagination"></div>
-
             <img
               src="/icons/arrow-right.svg"
               className="swiper-button-next"
-              style={{ transform: "rotate(-180deg)" }}
-              alt=""
+              style={{ cursor: "pointer" }}
+              alt="next"
             />
           </Box>
         </Stack>

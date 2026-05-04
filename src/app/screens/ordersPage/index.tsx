@@ -101,6 +101,7 @@ export function OrdersPage() {
                       ? `${serverApi}/${authMember.memberImage}`
                       : "/icons/default-user.svg"
                   }
+                  alt={"user avatar"}
                   className={"order-user-avatar"}
                 />
                 <div className={"order-user-icon-box"}>
@@ -110,6 +111,7 @@ export function OrdersPage() {
                         ? "/icons/restaurant.svg"
                         : "/icons/user-badge.svg"
                     }
+                    alt={"member type"}
                     className={"order-user-prof-img"}
                   />
                 </div>
@@ -131,15 +133,19 @@ export function OrdersPage() {
               <div className={"spec-address-txt"}>
                 {authMember?.memberAddress
                   ? authMember.memberAddress
-                  : "Do not exist"}
+                  : "No address set"}
               </div>
             </Box>
           </Box>
           <Box className={"order-info-box"} sx={{ mt: "15px" }}>
+            <Box className={"payment-title"}>Save a Payment Card</Box>
+            <Box sx={{ mb: "14px", fontSize: "12px", color: "var(--text-muted)", textAlign: "center" }}>
+              Save your card for faster checkout on future orders.
+            </Box>
             <input
               type={"text"}
               name={"cardNumber"}
-              placeholder={"Gwandju Bank : **** 5077 1995 2023"}
+              placeholder={"Card Number: **** **** **** ****"}
               className={"card-input"}
             />
             <div
@@ -152,28 +158,29 @@ export function OrdersPage() {
               <input
                 type={"text"}
                 name={"cardPeriod"}
-                placeholder={"11 / 99"}
+                placeholder={"MM / YY"}
                 className={"card-half-input"}
               />
               <input
                 type={"text"}
                 name={"cardCVV"}
-                placeholder={"CVV : 070"}
+                placeholder={"CVV"}
                 className={"card-half-input"}
               />
             </div>
             <input
               type={"text"}
               name={"cardCreator"}
-              placeholder={"Samsung"}
+              placeholder={"Cardholder Name"}
               className={"card-input"}
             />
             <div className={"cards-box"}>
-              <img src={"/icons/paypal-card.svg"} />
-              <img src={"/icons/visa-card.svg"} />
-              <img src={"/icons/western-card.svg"} />
-              <img src={"/icons/master-card.svg"} />
+              <img src={"/icons/paypal-card.svg"} alt={"paypal"} />
+              <img src={"/icons/visa-card.svg"} alt={"visa"} />
+              <img src={"/icons/western-card.svg"} alt={"western union"} />
+              <img src={"/icons/master-card.svg"} alt={"mastercard"} />
             </div>
+            <button className={"save-card-btn"}>Save Card</button>
           </Box>
         </Stack>
       </Container>

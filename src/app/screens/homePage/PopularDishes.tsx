@@ -32,14 +32,18 @@ export default function PopularDishes() {
         <Stack className="popular-section">
           <Box className="category-title">Popular Dishes</Box>
           <Stack className="cards-frame">
-            {popularDishes?.length !== 0 ? (
-              popularDishes.map((ele: Product) => {
-                const imagePath = `${serverApi}/${ele.productImages[0]}`;
-                return (
-                  <CssVarsProvider key={ele._id}>
-                    <Card className="card">
+            <CssVarsProvider defaultMode="dark">
+              {popularDishes?.length !== 0 ? (
+                popularDishes.map((ele: Product) => {
+                  const imagePath = `${serverApi}/${ele.productImages[0]}`;
+                  return (
+                    <Card key={ele._id} className="card">
                       <CardCover>
-                        <img src={imagePath} alt={ele.productName} />
+                        <img
+                          src={imagePath}
+                          alt={ele.productName}
+                          onError={(e) => { (e.target as HTMLImageElement).src = "/img/food-city.webp"; }}
+                        />
                       </CardCover>
                       <CardCover className="card-cover" />
                       <CardContent sx={{ justifyContent: "flex-end" }}>
@@ -55,7 +59,6 @@ export default function PopularDishes() {
                           >
                             {ele.productName}
                           </Typography>
-
                           <Typography
                             sx={{
                               fontWeight: "md",
@@ -65,13 +68,10 @@ export default function PopularDishes() {
                             }}
                           >
                             {ele.productViews}
-                            <VisibilityIcon
-                              sx={{ fontSize: 25, marginLeft: "5px" }}
-                            />
+                            <VisibilityIcon sx={{ fontSize: 25, marginLeft: "5px" }} />
                           </Typography>
                         </Stack>
                       </CardContent>
-
                       <CardOverflow
                         sx={{
                           display: "flex",
@@ -90,12 +90,12 @@ export default function PopularDishes() {
                         </Typography>
                       </CardOverflow>
                     </Card>
-                  </CssVarsProvider>
-                );
-              })
-            ) : (
-              <Box>No products are not available</Box>
-            )}
+                  );
+                })
+              ) : (
+                <Box>No products available</Box>
+              )}
+            </CssVarsProvider>
           </Stack>
         </Stack>
       </Container>

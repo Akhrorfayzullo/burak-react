@@ -66,10 +66,11 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
     console.log(e.target.value);
   };
 
-  const handlePasswoerKeyDown = (e: T) => {
+  const handlePasswordKeyDown = (e: T) => {
     if (e.key === "Enter" && signupOpen) {
       handleSignupRequest().then();
     } else if (e.key === "Enter" && loginOpen) {
+      handleLoginRequest().then();
     }
   };
 
@@ -167,7 +168,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 label="password"
                 variant="outlined"
                 onChange={handlePassword}
-                onKeyDown={handlePasswoerKeyDown}
+                onKeyDown={handlePasswordKeyDown}
               />
               <Fab
                 sx={{ marginTop: "30px", width: "120px" }}
@@ -223,7 +224,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 variant={"outlined"}
                 type={"password"}
                 onChange={handlePassword}
-                onKeyDown={handlePasswoerKeyDown}
+                onKeyDown={handlePasswordKeyDown}
               />
               <Fab
                 sx={{ marginTop: "27px", width: "120px" }}

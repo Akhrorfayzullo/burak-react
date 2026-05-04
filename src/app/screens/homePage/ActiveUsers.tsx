@@ -22,10 +22,12 @@ export default function ActiveUsers() {
         <Stack className={"main"}>
           <Box className={"category-title"}>Active Users</Box>
           <Stack className={"cards-frame"}>
-            <CssVarsProvider>
+            <CssVarsProvider defaultMode="dark">
               {topUsers.length !== 0 ? (
                 topUsers.map((member: Member) => {
-                  const imagePath = `${serverApi}/${member.memberImage}`;
+                  const imagePath = member.memberImage
+                    ? `${serverApi}/${member.memberImage}`
+                    : "/icons/default-user.svg";
                   return (
                     <Card
                       key={member._id}
@@ -34,7 +36,11 @@ export default function ActiveUsers() {
                     >
                       <CardOverflow>
                         <AspectRatio ratio={"1"}>
-                          <img src={imagePath} alt="" />
+                          <img
+                            src={imagePath}
+                            alt={member.memberNick}
+                            onError={(e) => { (e.target as HTMLImageElement).src = "/icons/default-user.svg"; }}
+                          />
                         </AspectRatio>
                         <Typography className="member-nickname">
                           {member.memberNick}

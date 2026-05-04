@@ -42,6 +42,7 @@ export default function UserPage() {
                         ? `${serverApi}/${authMember.memberImage}`
                         : "/icons/default-user.svg"
                     }
+                    alt={"user avatar"}
                     className={"order-user-avatar"}
                   />
                   <div className={"order-user-icon-box"}>
@@ -51,6 +52,7 @@ export default function UserPage() {
                           ? "/icons/restaurant.svg"
                           : "/icons/user-badge.svg"
                       }
+                      alt={"member type"}
                     />
                   </div>
                 </div>
@@ -67,10 +69,10 @@ export default function UserPage() {
                 </span>
               </Box>
               <Box className={"user-media-box"}>
-                <FacebookIcon />
-                <InstagramIcon />
-                <TelegramIcon />
-                <YouTubeIcon />
+                <a href={"#"} className={"social-icon"} aria-label={"Facebook"}><FacebookIcon /></a>
+                <a href={"#"} className={"social-icon"} aria-label={"Instagram"}><InstagramIcon /></a>
+                <a href={"#"} className={"social-icon"} aria-label={"Telegram"}><TelegramIcon /></a>
+                <a href={"#"} className={"social-icon"} aria-label={"YouTube"}><YouTubeIcon /></a>
               </Box>
               <p className={"user-desc"}>
                 {authMember?.memberDesc

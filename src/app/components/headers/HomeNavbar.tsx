@@ -7,7 +7,7 @@ import {
   MenuItem,
   Stack,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Basket from "./Basket";
 import React, { useEffect, useState } from "react";
 import { CardItem } from "../../../lib/types/search";
@@ -46,9 +46,9 @@ export function HomeNavbar(props: HomeNavbarProps) {
   const { authMember } = useGlobals();
 
   return (
-    <div className="home-navbar">
+    <div className="home-navbar" style={{ backgroundImage: "url('/img/banner.webp')" }}>
       <Container className="navbar-container">
-        <Stack className="menu">
+        <Stack className="menu" style={{ animation: "fadeIn 0.8s cubic-bezier(0.4,0,0.2,1) 2.6s both" }}>
           <Box>
             <NavLink to="/">
               <img
@@ -109,7 +109,15 @@ export function HomeNavbar(props: HomeNavbarProps) {
               </Box>
             ) : (
               <img
-                style={{ width: "50px", height: "50px", borderRadius: "24px" }}
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  border: "2px solid #c9a84c",
+                  objectFit: "cover",
+                  cursor: "pointer",
+                  boxShadow: "0 0 12px rgba(201,168,76,0.3)",
+                }}
                 src={
                   authMember?.memberImage
                     ? `${serverApi}/${authMember?.memberImage}`
@@ -165,24 +173,39 @@ export function HomeNavbar(props: HomeNavbarProps) {
           </Stack>
         </Stack>
         <Stack className="header-frame">
-          <Stack className="detail">
-            <Box className="head-main-txt"> World's Most Delicious Cousine</Box>
+          <Stack className="detail" style={{ animation: "fadeUp 1s cubic-bezier(0.4,0,0.2,1) 2.8s both" }}>
+            <Box className="head-main-txt">World's Most Delicious Cuisine</Box>
             <Box className="wel-txt">The Choice, not just a choice</Box>
-            <Box className="service-txt">2 hours service</Box>
-            <Box className="signup">
-              {!authMember ? (
-                <Button
-                  variant="contained"
-                  className="signup-button"
-                  onClick={() => setSignupOpen(true)}
-                >
-                  SIGN UP
+            <Box className="service-txt">⏱ Open 24 hours · Free delivery over $30</Box>
+            <Box className="signup" style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+              <Link to="/products" style={{ textDecoration: "none" }}>
+                <Button variant="contained" className="signup-button">
+                  Order Now
                 </Button>
-              ) : null}
+              </Link>
+              {!authMember && (
+                <Button
+                  variant="outlined"
+                  onClick={() => setSignupOpen(true)}
+                  style={{
+                    width: "160px",
+                    height: "56px",
+                    borderRadius: "8px",
+                    borderColor: "rgba(201,168,76,0.5)",
+                    color: "#e8c96d",
+                    fontFamily: "Poppins",
+                    fontWeight: 600,
+                    fontSize: "15px",
+                    textTransform: "none",
+                  }}
+                >
+                  Sign Up
+                </Button>
+              )}
             </Box>
           </Stack>
-          <Box className="logo-frame">
-            <div className="logo-img"></div>
+          <Box className="logo-frame" style={{ animation: "fadeIn 1.2s cubic-bezier(0.4,0,0.2,1) 3.1s both" }}>
+            <div className="logo-img" style={{ backgroundImage: "url('/img/logo.webp')" }}></div>
           </Box>
         </Stack>
       </Container>

@@ -131,7 +131,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
                 <Button
                   value={order._id}
                   variant="contained"
-                  className={"pay-button"}
+                  className={"payment-button"}
                   onClick={processOrderHandler}
                 >
                   Payment
@@ -141,19 +141,13 @@ export default function PausedOrders(props: PausedOrdersProps) {
           );
         })}
 
-        {!pausedOrders ||
-          (pausedOrders.length === 0 && (
-            <Box
-              display={"flex"}
-              flexDirection={"row"}
-              justifyContent={"center"}
-            >
-              <img
-                src={"/icons/noimage-list.svg"}
-                style={{ width: 300, height: 300 }}
-              />
-            </Box>
-          ))}
+        {pausedOrders?.length === 0 && (
+          <Box className={"empty-orders"}>
+            <img src={"/icons/noimage-list.svg"} className={"empty-orders-icon"} alt={""} />
+            <p className={"empty-orders-title"}>No paused orders</p>
+            <p className={"empty-orders-sub"}>Items you add to your cart will appear here.</p>
+          </Box>
+        )}
       </Stack>
     </TabPanel>
   );

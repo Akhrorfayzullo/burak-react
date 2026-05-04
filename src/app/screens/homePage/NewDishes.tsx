@@ -14,10 +14,6 @@ import { createSelector } from "reselect";
 import { retrieveNewDishes } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { Product } from "../../../lib/types/product";
-import {
-  ProductCollection,
-  ProductVolume,
-} from "../../../lib/enums/product.enums";
 
 const newDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
   newDishes,
@@ -32,44 +28,33 @@ export default function NewDishes() {
         <Stack className="main">
           <Box className="category-title">Fresh Menu</Box>
           <Stack className="cards-frame">
-            <CssVarsProvider>
+            <CssVarsProvider defaultMode="dark">
               {newDishes.length !== 0 ? (
                 newDishes.map((ele: Product) => {
                   const imagePath = `${serverApi}/${ele.productImages[0]}`;
-                  const sizeVolume =
-                    ele.productCollection === ProductCollection.DRINK
-                      ? ele.productVolume + " l"
-                      : ele.productSize + " size";
-                  // console.log("SSSSSSSSSSS", sizeVolume);
                   return (
                     <Card key={ele._id} variant="outlined" className="card">
-                      <CardOverflow>
-                        <div className="product-sale">${sizeVolume}</div>
+                      <CardOverflow sx={{ position: "relative" }}>
+                        <div className="product-sale">${ele.productPrice}</div>
                         <AspectRatio ratio="1">
-                          <img src={imagePath} alt={ele.productName} />
+                          <img
+                            src={imagePath}
+                            alt={ele.productName}
+                            onError={(e) => { (e.target as HTMLImageElement).src = "/img/food-city.webp"; }}
+                          />
                         </AspectRatio>
                       </CardOverflow>
 
                       <CardOverflow variant="soft" className="product-detail">
                         <Stack className="info">
-                          <Stack flexDirection={"row"}>
+                          <Stack flexDirection={"row"} alignItems="center" gap={1}>
                             <Typography className="title">
                               {ele.productName}
                             </Typography>
-
-                            <Divider width="2" height="24" bg="#d9d9d9" />
-
-                            <Typography className="price">
-                              {ele.productPrice}
-                            </Typography>
-                          </Stack>
-
-                          <Stack>
-                            <Typography className="views">
+                            <Divider width="1" height="16" bg="rgba(201,168,76,0.4)" />
+                            <Typography className="views" sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
                               {ele.productViews}
-                              <VisibilityIcon
-                                sx={{ fontSize: 20, marginLeft: "5px" }}
-                              />
+                              <VisibilityIcon sx={{ fontSize: 16 }} />
                             </Typography>
                           </Stack>
                         </Stack>

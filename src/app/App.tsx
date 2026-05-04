@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/app.css";
+import Preloader from "./components/Preloader";
 import { Box, Container, Stack, Typography, Button } from "@mui/material";
 import { RippleBadge } from "./MaterialTheme/styled";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
@@ -30,6 +31,12 @@ function App() {
   const [signupOpen, setSignupOpen] = useState<boolean>(false);
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [showPreloader, setShowPreloader] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowPreloader(false), 2900);
+    return () => clearTimeout(timer);
+  }, []);
 
   //Handlers
   const handleSignupClose = () => setSignupOpen(false);
@@ -55,6 +62,8 @@ function App() {
 
   return (
     <>
+      {showPreloader && <Preloader />}
+      <div key={location.pathname} className="page-enter">
       {location.pathname === "/" ? (
         <HomeNavbar
           cartItems={cartItems}
@@ -108,6 +117,7 @@ function App() {
         handleLoginClose={handleLoginClose}
         handleSignupClose={handleSignupClose}
       />
+      </div>
     </>
   );
 }

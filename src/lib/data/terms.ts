@@ -1,6 +1,6 @@
 export const terms = [
-	'Making orders from the site is complete, live register to use communications you must pass.',
-	'This is why you cannot cancel your orders once you have paid for them check before making payments.',
-	'It is not possible to write and distribute personal ads without the permission of the admin.',
-	'All your actions are under the control of our restaurant administration, so please follow the general rules.',
+	'To place orders on our site, you must first register and create an account. All users must use real contact information.',
+	'Orders cannot be cancelled once payment has been confirmed. Please review your cart carefully before completing a purchase.',
+	'Posting or distributing personal advertisements on this platform is strictly prohibited without prior written permission from the admin.',
+	'All activity on this platform is monitored by our restaurant administration. Users are expected to follow the community guidelines at all times.',
 ];

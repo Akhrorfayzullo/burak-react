@@ -42,7 +42,7 @@ export function OtherNavbar(props: OtherNavbarProps) {
   } = props;
   const { authMember } = useGlobals();
   return (
-    <div className="other-navbar">
+    <div className="other-navbar" style={{ backgroundImage: "url('/img/banner.webp')" }}>
       <Container className="navbar-container">
         <Stack className="menu">
           <Box>
@@ -119,7 +119,15 @@ export function OtherNavbar(props: OtherNavbarProps) {
               <Box>
                 <Button
                   variant="contained"
-                  style={{ background: "#3776cc", color: "##f8f8ff" }}
+                  style={{
+                    background: "linear-gradient(135deg, #c9a84c, #8b6914)",
+                    color: "#0a0a0a",
+                    fontFamily: "Poppins",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 16px rgba(201,168,76,0.3)",
+                  }}
                   onClick={() => setLoginOpen(true)}
                 >
                   Login
@@ -127,7 +135,15 @@ export function OtherNavbar(props: OtherNavbarProps) {
               </Box>
             ) : (
               <img
-                style={{ width: "50px", height: "50px", borderRadius: "24px" }}
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  border: "2px solid #c9a84c",
+                  objectFit: "cover",
+                  cursor: "pointer",
+                  boxShadow: "0 0 12px rgba(201,168,76,0.3)",
+                }}
                 src={
                   authMember?.memberImage
                     ? `${serverApi}/${authMember?.memberImage}`

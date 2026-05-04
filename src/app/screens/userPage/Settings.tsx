@@ -93,16 +93,15 @@ export function Settings() {
   return (
     <Box className={"settings"}>
       <Box className={"member-media-frame"}>
-        <img src={memberImage} className={"mb-image"} />
-        <div className={"media-change-box"} style={{ marginLeft: "30px" }}>
-          <span>Upload image</span>
+        <img src={memberImage} alt={"member"} className={"mb-image"} />
+        <div className={"media-change-box"}>
+          <span>Profile Photo</span>
           <p>JPG, JPEG, PNG formats only!</p>
-          <div className={"up-del-box"}>
-            <Button component="label" onChange={handleImageViewer}>
-              <CloudDownloadIcon />
-              <input type="file" hidden />
-            </Button>
-          </div>
+          <label className={"upload-btn"}>
+            <CloudDownloadIcon sx={{ fontSize: 16 }} />
+            Upload Photo
+            <input type="file" hidden onChange={handleImageViewer} />
+          </label>
         </div>
       </Box>
       <Box className={"input-frame"}>
@@ -111,7 +110,7 @@ export function Settings() {
           <input
             className={"spec-input mb-nick"}
             type="text"
-            placeholder={authMember?.memberNick}
+            placeholder={"Enter your username"}
             value={memberUpdateInput.memberNick}
             name="memberNick"
             onChange={memberNickHandler}
@@ -119,27 +118,25 @@ export function Settings() {
         </div>
       </Box>
       <Box className={"input-frame"}>
-        <div className={"short-input"}>
+        <div className={"long-input"}>
           <label className={"spec-label"}>Phone</label>
           <input
             className={"spec-input mb-phone"}
             type="text"
-            placeholder={authMember?.memberPhone ?? "no phone"}
+            placeholder={"Enter your phone number"}
             value={memberUpdateInput.memberPhone}
             name="memberPhone"
             onChange={memberPhoneHandler}
           />
         </div>
-        <div className={"short-input"}>
+      </Box>
+      <Box className={"input-frame"}>
+        <div className={"long-input"}>
           <label className={"spec-label"}>Address</label>
           <input
-            className={"spec-input  mb-address"}
+            className={"spec-input mb-address"}
             type="text"
-            placeholder={
-              authMember?.memberAddress
-                ? authMember.memberAddress
-                : "no address"
-            }
+            placeholder={"Enter your delivery address"}
             value={memberUpdateInput.memberAddress}
             name="memberAddress"
             onChange={memberAddressHandler}
@@ -161,8 +158,8 @@ export function Settings() {
         </div>
       </Box>
       <Box className={"save-box"}>
-        <Button variant={"contained"} onClick={handleSubmitButton}>
-          Save
+        <Button className={"save-btn"} variant={"contained"} onClick={handleSubmitButton}>
+          Save Changes
         </Button>
       </Box>
     </Box>

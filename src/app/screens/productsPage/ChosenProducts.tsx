@@ -63,7 +63,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
 
     const member = new MemberService();
     member
-      .getRestaurnat()
+      .getRestaurant()
       .then((data) => setRestaurant(data))
       .catch((err) => console.log(err));
   }, []);
@@ -99,7 +99,6 @@ export default function ChosenProduct(props: ChosenProductsProps) {
             <span className={"resto-name"}>
               Contact us at: {restaurant?.memberPhone}
             </span>
-            <span className={"resto-name"}>{restaurant?.memberNick}</span>
             <Box className={"rating-box"}>
               <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
               <div className={"evaluation-box"}>

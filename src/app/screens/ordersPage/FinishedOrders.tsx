@@ -65,19 +65,13 @@ const FinishedOrders = () => {
           );
         })}
 
-        {!finishedOrders ||
-          (finishedOrders.length === 0 && (
-            <Box
-              display={"flex"}
-              flexDirection={"row"}
-              justifyContent={"center"}
-            >
-              <img
-                src={"/icons/noimage-list.svg"}
-                style={{ width: 300, height: 300 }}
-              />
-            </Box>
-          ))}
+        {(!finishedOrders || finishedOrders.length === 0) && (
+          <Box className={"empty-orders"}>
+            <img src={"/icons/noimage-list.svg"} className={"empty-orders-icon"} alt={""} />
+            <p className={"empty-orders-title"}>No completed orders yet</p>
+            <p className={"empty-orders-sub"}>Your delivery history will show up here.</p>
+          </Box>
+        )}
       </Stack>
     </TabPanel>
   );

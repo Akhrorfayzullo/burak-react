@@ -6,6 +6,7 @@ import Advertisement from "./Advertisement";
 import ActiveUsers from "./ActiveUsers";
 import Events from "./Events";
 import "../../../css/home.css";
+import useScrollReveal from "../../hooks/useScrollReveal";
 
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
@@ -26,6 +27,7 @@ export function HomePage() {
   const { setPopularDishes, setNewDishes, setTopUsers } = actionDispatch(
     useDispatch()
   );
+  useScrollReveal();
 
   useEffect(() => {
     const product = new ProductService();
@@ -67,12 +69,12 @@ export function HomePage() {
   }, []);
   return (
     <div className={"homepage"}>
-      <Statistics />
-      <PopularDishes />
-      <NewDishes />
-      <Advertisement />
-      <ActiveUsers />
-      <Events />
+      <div className="reveal"><Statistics /></div>
+      <div className="reveal reveal-delay-1"><PopularDishes /></div>
+      <div className="reveal reveal-delay-1"><NewDishes /></div>
+      <div className="reveal"><Advertisement /></div>
+      <div className="reveal reveal-delay-1"><ActiveUsers /></div>
+      <div className="reveal reveal-delay-1"><Events /></div>
     </div>
   );
 }

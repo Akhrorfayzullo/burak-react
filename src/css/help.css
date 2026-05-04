@@ -1,59 +1,77 @@
+/* ===== HELP PAGE ===== */
 .help-page {
   width: 100%;
   height: auto;
   display: flex;
-  background: #f8f8ff;
+  background: var(--bg-primary);
 }
 
 .help-page .help-container {
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   flex-direction: row;
 }
 
+/* ===== TABS NAV ===== */
 .help-page .help-menu {
   width: 100%;
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border-bottom: 1px solid #f8f8ff;
+  margin-bottom: 8px;
 }
 
-.help-page .help-menu .table-list {
-  display: flex;
-  justify-content: space-between;
+.help-page .help-menu > div {
+  width: 100%;
 }
 
-.help-page .css-1gsv261 {
-  width: 75%;
+.help-page .MuiTabs-root {
+  width: 100%;
 }
 
-.help-page .css-heg063-MuiTabs-flexContainer {
-  justify-content: space-between;
+.help-page .MuiTabs-flexContainer {
+  justify-content: space-around;
+}
+
+.help-page .MuiTab-root {
+  flex: 1;
+  font-family: "Poppins" !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase !important;
+  min-height: 48px !important;
+}
+
+.help-page .MuiTab-root.Mui-selected {
+  color: var(--gold-primary) !important;
+}
+
+.help-page .MuiTabs-indicator {
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-dark)) !important;
+  height: 2px !important;
 }
 
 .help-page .css-19kzrtu {
   padding-top: 24px;
 }
 
+/* ===== MAIN CONTENT AREA ===== */
 .help-page .help-main-content {
   width: 100%;
-  height: 1000px;
+  min-height: auto;
 }
 
+/* ===== RULES BOX ===== */
 .help-page .rules-box {
-  padding: 24px;
+  padding: 28px;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f8f8ff;
-  border: 1px solid #ededed;
-  box-shadow: 0px 20px 30px rgba(25, 25, 46, 0.04);
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
 }
 
 .rules-box .rules-frame {
@@ -64,33 +82,93 @@
 }
 
 .rules-box .rules-frame p {
-  border-bottom: 1px solid #dddddd;
-  color: #000000;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  font-family: "Poppins";
   font-weight: 400;
-  font-size: 1rem;
-  letter-spacing: 0.00938em;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
 }
 
+.rules-box .rules-frame p:last-child {
+  border-bottom: none;
+}
+
+/* ===== ACCORDION ===== */
 .help-page .accordion-menu {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
+.help-page .accordion-menu .MuiAccordion-root {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-glass) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s !important;
+}
+
+.help-page .accordion-menu .MuiAccordion-root:before {
+  display: none !important;
+}
+
+.help-page .accordion-menu .MuiAccordion-root.Mui-expanded {
+  border-color: rgba(201, 168, 76, 0.35) !important;
+  margin: 0 !important;
+}
+
+.help-page .accordion-menu .MuiAccordionSummary-root {
+  color: var(--text-primary) !important;
+  font-family: "Poppins" !important;
+  min-height: 52px !important;
+}
+
+.help-page .accordion-menu .MuiAccordionSummary-root .MuiTypography-root {
+  font-family: "Poppins" !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+}
+
+.help-page .accordion-menu .MuiAccordionSummary-expandIconWrapper {
+  color: var(--text-muted) !important;
+}
+
+.help-page .accordion-menu .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+  color: var(--gold-primary) !important;
+}
+
+.help-page .accordion-menu .MuiAccordionDetails-root {
+  background: var(--bg-glass) !important;
+  border-top: 1px solid var(--border-glass) !important;
+  padding: 16px 20px !important;
+}
+
+.help-page .accordion-menu .MuiAccordionDetails-root .MuiTypography-root {
+  font-family: "Poppins" !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.6 !important;
+}
+
+/* ===== CONTACT / ADMIN LETTER ===== */
 .help-page .admin-letter-box {
-  padding: 60px;
+  padding: 36px;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f8f8ff;
-  border: 1px solid #ededed;
-  box-shadow: 0px 20px 30px rgba(25, 25, 46, 0.04);
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
 }
 
 .help-page .admin-letter-box .admin-letter-container {
@@ -101,82 +179,100 @@
 }
 
 .help-page .admin-letter-container .admin-letter-frame {
-  margin-top: 30px;
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
 }
 
 .help-page .admin-letter-frame span {
-  font-family: "ABeeZee";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  color: #140342;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text-primary);
 }
 
 .help-page .admin-letter-frame p {
-  margin-top: 20px;
-  font-family: "Sedan";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
+  margin-top: 8px;
+  font-family: "Poppins";
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
 }
 
-.help-page .admin-letter-container .admin-letter-frame {
-  display: flex;
-  flex-direction: column;
-}
-
+/* ===== INPUT FIELDS ===== */
 .help-page .admin-letter-frame .admin-input-box {
-  margin-top: 30px;
+  margin-top: 24px;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
 .help-page .admin-letter-frame .admin-input-box label {
-  font-family: "Verdana";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  color: #140342;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
 }
 
 .help-page .admin-letter-frame .admin-input-box input {
-  margin-top: 10px;
-  padding: 20px;
+  padding: 12px 16px;
   width: 100%;
-  height: 60px;
-  display: flex;
-  background: #f8f8ff;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  font-family: "Verdana";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
+  height: 48px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  font-family: "Poppins";
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.help-page .admin-letter-frame .admin-input-box input:focus {
+  border-color: var(--gold-primary);
+  background: rgba(201, 168, 76, 0.05);
 }
 
 .help-page .admin-letter-frame .admin-input-box textarea {
-  margin-top: 10px;
-  padding: 20px;
+  padding: 14px 16px;
   width: 100%;
-  height: 150px;
-  display: flex;
-  background: #f8f8ff;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  font-family: "Verdana";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 26px;
-  color: #4f547b;
+  height: 140px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  font-family: "Poppins";
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  resize: vertical;
+  transition: var(--transition);
+}
+
+.help-page .admin-letter-frame .admin-input-box textarea:focus {
+  border-color: var(--gold-primary);
+  background: rgba(201, 168, 76, 0.05);
+}
+
+/* ===== SEND BUTTON ===== */
+.help-page .send-btn {
+  width: 100% !important;
+  height: 48px !important;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)) !important;
+  color: #0a0a0a !important;
+  font-family: "Poppins" !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+  border-radius: var(--radius-sm) !important;
+  border: none !important;
+  transition: var(--transition) !important;
+}
+
+.help-page .send-btn:hover {
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35) !important;
+  transform: translateY(-1px) !important;
 }

@@ -1,43 +1,46 @@
+/* ===== ORDER PAGE ===== */
 .order-page {
   width: 100%;
   height: auto;
-  background: #f8f8ff;
+  background: var(--bg-primary);
   display: flex;
 }
 
 .order-page .order-container {
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   display: flex;
   flex-direction: row;
+  gap: 30px;
 }
 
+/* ===== ORDER LEFT ===== */
 .order-page .order-left {
-  width: 860px;
+  flex: 1;
   height: auto;
+  min-width: 0;
 }
 
+/* ===== ORDER RIGHT ===== */
 .order-page .order-right {
-  width: 360px;
-  height: auto;
+  width: 340px;
+  flex-shrink: 0;
   margin-top: 86px;
-  margin-left: 30px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .order-page .order-right .order-info-box {
-  width: 360px;
-  height: auto;
-  padding: 20px;
+  width: 100%;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f8f8ff;
-  box-shadow: 15px 14px 4px rgba(0, 0, 0, 0.25),
-    inset -1px 0px 16px 13px rgb(24 23 112 / 20%);
-  border-radius: 16px;
-  margin-bottom: 25px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-dark);
 }
 
 .order-page .order-right .order-info-box .member-box {
@@ -48,11 +51,12 @@
 
 .order-page .order-right .order-info-box .liner {
   width: 100%;
-  border: 1px solid #a1a1a1;
-  margin-top: 40px;
-  margin-bottom: 8px;
+  border: none;
+  border-top: 1px solid var(--border-glass);
+  margin: 24px 0 16px 0;
 }
 
+/* ===== USER PROFILE CARD ===== */
 .order-page .order-info-box .order-user-img {
   position: relative;
   display: flex;
@@ -61,284 +65,425 @@
 }
 
 .order-page .order-info-box .order-user-img .order-user-avatar {
-  width: 117px;
-  height: 112px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 37px;
+  width: 110px;
+  height: 110px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border-glass);
+  object-fit: cover;
+  transition: var(--transition);
 }
 
 .order-page .order-info-box .order-user-img .order-user-avatar:hover {
-  transform: scale(1.2);
-  transition: all 0.5s linear;
+  transform: scale(1.05);
+  border-color: var(--gold-primary);
   cursor: pointer;
 }
 
 .order-page .order-info-box .order-user-icon-box {
   position: absolute;
   padding: 5px;
-  width: 30px;
-  height: 30px;
-  top: 81%;
+  width: 28px;
+  height: 28px;
+  top: 80%;
   right: 0;
   display: flex;
-  background: rgba(0, 0, 0, 0.33);
-  border-radius: 37px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid var(--border-glass);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .order-page .order-user-icon-box .order-user-prof-img {
   filter: brightness(0) invert(1);
+  width: 14px;
 }
 
 .order-page .order-info-box .order-user-name {
-  margin-top: 10px;
-  font-family: "Commissioner";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 36px;
-  color: #08090d;
+  margin-top: 12px;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--text-primary);
+  text-align: center;
 }
 
 .order-page .order-info-box .order-user-prof {
-  font-family: "Commissioner";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 36px;
-  color: #a1a1a1;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
 }
 
 .order-page .order-info-box .order-user-address {
   width: 90%;
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
 }
 
 .order-page .order-info-box .spec-address-txt {
-  margin-left: 5px;
-  font-family: "DM Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #616164;
+  font-family: "Poppins";
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ===== PAYMENT CARD INPUTS ===== */
+.order-page .order-info-box .payment-title {
+  width: 100%;
+  font-family: "Poppins";
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  margin-top: 8px;
 }
 
 .order-page .order-info-box .card-input {
   margin-top: 10px;
-  padding: 10px;
+  padding: 10px 14px;
   width: 100%;
-  height: 40px;
-  background: #f5f5f5;
-  border-radius: 10px;
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
-  border: 0.5px solid #b3a6a6;
-  letter-spacing: -0.02em;
-  color: #434141;
+  height: 44px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  font-family: "Poppins";
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.order-page .order-info-box .card-input:focus {
+  border-color: var(--gold-primary);
+  background: rgba(201, 168, 76, 0.05);
 }
 
 .order-page .order-info-box .card-half-input {
   margin-top: 10px;
-  padding: 10px;
-  width: 49%;
-  height: 40px;
-  background: #f5f5f5;
-  border-radius: 10px;
-  font-family: "Nunito";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
-  border: 0.5px solid #b3a6a6;
-  letter-spacing: -0.02em;
-  color: #434141;
+  padding: 10px 14px;
+  width: 48%;
+  height: 44px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  font-family: "Poppins";
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.order-page .order-info-box .card-half-input:focus {
+  border-color: var(--gold-primary);
+  background: rgba(201, 168, 76, 0.05);
 }
 
 .order-page .order-info-box .cards-box {
-  margin-top: 35px;
-  width: 80%;
+  margin-top: 16px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 8px;
 }
 
+/* ===== ORDER TABS ===== */
 .order-page .order-left .order-nav-frame {
   width: 100%;
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border-bottom: 1px solid #f8f8ff;
+  margin-bottom: 8px;
 }
 
-.order-page .order-left .order-nav-frame .table-list {
-  display: flex;
+.order-page .order-left .order-nav-frame > div {
+  width: 100%;
+}
+
+/* MUI Tabs: stretch to full width and align indicator correctly */
+.order-page .MuiTabs-root {
+  width: 100%;
+}
+
+.order-page .MuiTabs-flexContainer {
   justify-content: space-between;
 }
 
-.order-page .css-1gsv261 {
-  width: 75%;
+.order-page .MuiTab-root {
+  flex: 1;
+  font-family: "Poppins" !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase !important;
+  transition: color 0.2s !important;
+  min-height: 48px !important;
 }
 
-.order-page .css-heg063-MuiTabs-flexContainer {
-  justify-content: space-between;
+.order-page .MuiTab-root.Mui-selected {
+  color: var(--gold-primary) !important;
 }
 
-.order-page .order-main-content {
-  width: 855px;
-  height: auto;
+.order-page .MuiTabs-indicator {
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-dark)) !important;
+  height: 2px !important;
 }
 
 .order-page .css-19kzrtu {
-  padding-top: 24px;
+  padding-top: 16px;
+}
+
+/* ===== ORDER MAIN CONTENT ===== */
+.order-page .order-main-content {
+  width: 100%;
+  height: auto;
 }
 
 .order-page .order-main-content .order-main-box {
   position: relative;
   width: 100%;
-  max-height: 285px;
-  margin-bottom: 25px;
-  background: #f8f8ff;
-  box-shadow: -13px 16px 4px rgba(0, 0, 0, 0.25),
-    inset 0px -3px 20px 11px #18177033;
-  border-radius: 16px;
+  max-height: 300px;
+  margin-bottom: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.order-page .order-main-content .order-main-box:hover {
+  border-color: rgba(201, 168, 76, 0.35);
 }
 
 .order-page .order-main-content .order-main-box .order-box-scroll {
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
   width: 100%;
-  min-height: 105px;
+  min-height: 90px;
   max-height: 205px;
-  margin-top: 15px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  overflow-y: scroll;
+  align-items: flex-start;
+  padding: 0 8px;
 }
 
-.order-page
-  .order-main-content
-  .order-main-box
-  .order-box-scroll::-webkit-scrollbar {
-  width: 6px;
+.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar {
+  width: 4px;
 }
 
+.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 2px;
+}
+
+/* ===== ORDER ITEM ROW ===== */
 .order-page .order-box-scroll .orders-name-price {
   position: relative;
-  height: 47px;
-  margin-top: 5px;
-  margin-left: 50px;
+  width: 100%;
+  height: 52px;
+  margin-top: 6px;
+  padding: 0 12px 0 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.order-page .order-box-scroll .orders-name-price:hover {
+  background: var(--bg-glass);
 }
 
 .order-page .order-box-scroll .orders-name-price .order-dish-img {
-  position: relative;
-  width: 50px;
-  height: 47px;
-  border-radius: 29px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
   background-size: cover;
+  background-position: center;
+  border: 1px solid var(--border-glass);
+  flex-shrink: 0;
 }
 
 .order-page .order-box-scroll .orders-name-price .title-dish {
-  position: relative;
-  width: 260px;
-  height: 36px;
-  margin-left: 20px;
-  font-family: "Commissioner";
-  font-style: normal;
+  flex: 1;
+  margin-left: 14px;
+  font-family: "Poppins";
   font-weight: 500;
-  font-size: 22px;
-  line-height: 36px;
-  color: #000000;
+  font-size: 15px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .order-page .order-box-scroll .orders-name-price .price-box {
-  position: relative;
-  max-width: 170px;
-  height: 100%;
-  margin-left: 150px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  gap: 16px;
+  margin-left: 12px;
 }
 
 .order-page .order-box-scroll .orders-name-price .price-box p {
   font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
-  color: #262626;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--gold-light);
+  margin: 0;
+  white-space: nowrap;
 }
 
+/* ===== ORDER TOTAL / ACTION BAR ===== */
 .order-page .order-main-content .order-main-box .total-price-box {
   position: relative;
   width: 100%;
-  height: 41px;
-  margin: 7px 0 7px 0;
+  height: 52px;
+  padding: 0 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  box-sizing: border-box;
-  border-radius: 5px;
-  overflow: hidden;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-glass);
+  background: rgba(0,0,0,0.2);
 }
 
 .order-page .order-main-content .total-price-box .cancel-button {
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  max-height: 40px;
+  border-radius: var(--radius-sm) !important;
+  background: rgba(139, 26, 26, 0.3) !important;
+  color: #e57373 !important;
+  border: 1px solid rgba(139, 26, 26, 0.5) !important;
+  font-family: "Poppins" !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  transition: var(--transition) !important;
+  height: 34px !important;
 }
+
+.order-page .order-main-content .total-price-box .cancel-button:hover {
+  background: rgba(139, 26, 26, 0.5) !important;
+}
+
 .order-page .order-main-content .order-main-box .total-price-box .box-total {
-  position: relative;
-  max-width: 535px;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
 }
 
 .order-page .total-price-box .box-total p {
-  margin-left: 20px;
-  font-family: "Commissioner";
-  font-style: normal;
+  font-family: "Poppins";
   font-weight: 500;
-  font-size: 14px;
-  line-height: 36px;
-  color: #000000;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .order-page .total-price-box .box-total .data-compl {
-  font-family: "Commissioner";
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Poppins";
+  font-weight: 600;
   font-size: 14px;
-  line-height: 36px;
-  color: #000000;
+  color: var(--text-primary);
 }
 
 .order-page .order-main-content .total-price-box .payment-button {
-  background: #56b74d;
-  color: #f8f8ff;
-  border-radius: 10px;
-  max-height: 40px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)) !important;
+  color: #0a0a0a !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: "Poppins" !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  height: 34px !important;
+  transition: var(--transition) !important;
+  border: none !important;
+}
+
+.order-page .order-main-content .total-price-box .payment-button:hover {
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35) !important;
+  transform: translateY(-1px) !important;
 }
 
 .order-page .order-main-content .total-price-box .verify-button {
-  background: #0288d1;
-  color: #f8f8ff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
-    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: rgba(2, 136, 209, 0.2) !important;
+  color: #4fc3f7 !important;
+  border: 1px solid rgba(2, 136, 209, 0.4) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: "Poppins" !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  height: 34px !important;
+  transition: var(--transition) !important;
+}
+
+.order-page .order-main-content .total-price-box .verify-button:hover {
+  background: rgba(2, 136, 209, 0.3) !important;
+}
+
+/* ===== EMPTY ORDER STATE ===== */
+.order-page .empty-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  gap: 12px;
+}
+
+.order-page .empty-orders .empty-orders-icon {
+  width: 100px;
+  height: 100px;
+  opacity: 0.35;
+  filter: invert(1);
+}
+
+.order-page .empty-orders .empty-orders-title {
+  font-family: "Poppins";
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.order-page .empty-orders .empty-orders-sub {
+  font-family: "Poppins";
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+  max-width: 280px;
+}
+
+/* ===== SAVE CARD BUTTON ===== */
+.order-page .order-info-box .save-card-btn {
+  margin-top: 16px;
+  width: 100%;
+  height: 42px;
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+  color: #0a0a0a;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: "Poppins";
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.order-page .order-info-box .save-card-btn:hover {
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35);
+  transform: translateY(-1px);
 }

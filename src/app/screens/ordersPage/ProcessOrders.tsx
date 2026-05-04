@@ -113,19 +113,13 @@ const ProcessOrders = (props: ProcessOrdersProps) => {
           );
         })}
 
-        {!processOrders ||
-          (processOrders.length === 0 && (
-            <Box
-              display={"flex"}
-              flexDirection={"row"}
-              justifyContent={"center"}
-            >
-              <img
-                src={"/icons/noimage-list.svg"}
-                style={{ width: 300, height: 300 }}
-              />
-            </Box>
-          ))}
+        {(!processOrders || processOrders.length === 0) && (
+          <Box className={"empty-orders"}>
+            <img src={"/icons/noimage-list.svg"} className={"empty-orders-icon"} alt={""} />
+            <p className={"empty-orders-title"}>No orders in process</p>
+            <p className={"empty-orders-sub"}>Confirmed orders will appear here while being prepared.</p>
+          </Box>
+        )}
       </Stack>
     </TabPanel>
   );

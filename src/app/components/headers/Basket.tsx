@@ -46,6 +46,13 @@ export default function Basket(props: BasketProps) {
     setAnchorEl(null);
   };
 
+  React.useEffect(() => {
+    if (!open) return;
+    const onScroll = () => handleClose();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [open]);
+
   const proceedOrderHandler = async () => {
     try {
       handleClose();
@@ -83,28 +90,22 @@ export default function Basket(props: BasketProps) {
         id="account-menu"
         open={open}
         onClose={handleClose}
-        // onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
             overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            background: "transparent",
+            boxShadow: "none",
             mt: 1.5,
-            "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
             "&:before": {
               content: '""',
               display: "block",
               position: "absolute",
               top: 0,
-              right: 14,
+              right: 18,
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
+              background: "var(--gold-dark)",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
