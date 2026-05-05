@@ -87,15 +87,11 @@ class MemberService {
         const url = this.path + "/member/logout"
         const result = await axios.post(url,{}, {withCredentials: true});
         console.log("MB: Logout result", result)
-
-        localStorage.removeItem("memberData")
-        localStorage.removeItem("accessToken")
-
-
       }catch(err){
         console.log("Errrrrooooorrrr  logout", err)
-        throw err
-
+      } finally {
+        localStorage.removeItem("memberData")
+        localStorage.removeItem("accessToken")
       }
      }
      public async updateMember(input: MemberUpdateInput): Promise<Member> {
